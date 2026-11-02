@@ -35,8 +35,12 @@ void mostrarTablero(char tablero[TAMANO][TAMANO])
     for (int fila = 0; fila < TAMANO; fila ++)
     {
         cout << "    ";
-        for (int col = 0; col < TAMANO; coll++)
+        for (int col = 0; col < TAMANO; col++)
         {
+            if (tablero[fila][col] == VACIO)
+            {
+                cout << (fila * TAMANO + col + 1);
+            }
 
         }
     }
