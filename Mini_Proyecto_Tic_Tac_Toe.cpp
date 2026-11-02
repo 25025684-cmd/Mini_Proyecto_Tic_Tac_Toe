@@ -18,6 +18,26 @@ int victoriasJugador2 = 0
 int empateas = 0
 
 //FUNCIONES DEL TABLERO
-void limpiarTablero(char tablero[TAMANO][TAMANO])
+void limpiarTablero(char tablero[TAMANO][TAMANO]) // DEJA TODAS LAS CASILLAS DEL TABLERO VACÍAS
 {
-    for int}
+    for (int fila = 0; fila < TAMANO; fila++) 
+    {
+        for (int col = 0; col < TAMANO; col++) 
+        {
+            tablero[fila][col] = VACIO;
+        }
+    }
+}
+
+void mostrarTablero(char tablero[TAMANO][TAMANO])
+{
+    cout << "\n";
+    for (int fila = 0; fila < TAMANO; fila ++)
+    {
+        cout << "    ";
+        for (int col = 0; col < TAMANO; coll++)
+        {
+
+        }
+    }
+}
