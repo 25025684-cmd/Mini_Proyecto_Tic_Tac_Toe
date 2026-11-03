@@ -52,3 +52,29 @@ void mostrarTablero(char tablero[TAMANO][TAMANO]) // DIBUJA EL TABLERO.
     }
     cout << "\n";
 }
+
+// INDICA SI UNA CASILLA ESTÁ DENTRO DEL TABLERO Y LIBRE
+bool casillalibre(char tablero[TAMANO][TAMANO], int fila, int col)
+{
+    return fila >= 0 && fila < TAMANO && col >= 0 && col < TAMANO
+            && tablero[fila][col] == VACIO;
+}
+
+// REVISA SI EL SIMBOLO DADO COMPLETÓ ALGUNA FILA, COLUMNA O DIAGONAL
+bool hayGanador(char tablero[TAMANO][TAMANO], char simbolo)
+//FILAS Y COLUMNAS
+{
+    for (int i = 0; < TAMANO; i++)
+    {
+        if (tablero[i][0] == simbolo && tablero[i][1] == simbolo && tablero [i][2] == simbolo)
+            return true;
+        if (tablero[0][i] == simbolo && tablero[1][i] == simbolo && tablero [2][i] == simbolo)
+            return true;
+    } 
+    // DIAGONALES
+    if (tablero[0][0] == simbolo && tablero[1][1] == simbolo && tablero [2][2] == simbolo)
+        return true;
+    if (tablero[0][2] == simbolo && tablero[1][1] == simbolo && tablero [2][0] == simbolo)
+        return true;
+    return false;
+}
