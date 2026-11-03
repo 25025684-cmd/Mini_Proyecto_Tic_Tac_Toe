@@ -90,7 +90,7 @@ bool tableroLleno(char tablero[TAMANO][TAMANO])
             return false;
         }
     }
-    return false;
+    return true;
 }
 
 // ENTRADA DE DATOS
@@ -328,7 +328,7 @@ int main()
         {
             mostrarInstrucciones();
         }
-    } while (opcion == 4);
+    } while (opcion != 4);
     cout << "\nGracias por jugar. Hasta pronto!\n";
     
     return 0;
