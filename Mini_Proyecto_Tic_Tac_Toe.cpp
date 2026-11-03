@@ -131,3 +131,19 @@ string leerNombre(const string& mensaje, const string& porDefecto)
     if (nombre.empty()) return porDefecto;
     return nombre;
 }
+
+// PREGUNTA SI/NO Y DEVUELVE TRUE PARA "SÍ"
+bool preguntarSiNo(const string& mensaje)
+{
+    while (true)
+    {
+        cout << mensaje << " (s/n): ";
+        string respuesta;
+        if (!getline(cin, respuesta)) exit(0);
+        if (respuesta == "s" || respuesta == "S") return true;
+        if (respuesta == "n" || respuesta == "N") return false;
+        cout << " Responde con 's' o 'n'.\n";
+    }
+}
+
+// TURNOS DE JUEGO
