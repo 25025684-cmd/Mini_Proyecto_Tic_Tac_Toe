@@ -164,3 +164,26 @@ void turnoHumano(char tablero[TAMANO][TAMANO], const string& nombre, char simbol
     }
 }
 
+// BUSCAR UNA CASILLA DONDE "SIMBOLO" GANARÍA EN EL SIGUIENTE MOVIMIENTO
+bool buscarGanadora(char tablero[TAMANO][TAMANO], char simbolo, int& filaGanadora, int& colGanadora)
+{
+    for (int fila = 0; fila < TAMANO; fila++)
+    {
+        for (int col = 0; col < TAMANO; col++)
+        {
+            if (tablero [fila][col] == VACIO)
+            {
+                tablero[fila][col] = simbolo;
+                bool gana = hayGanador(tablero, simbolo);
+                tablero[fila][col] = VACIO;
+                if (gana)
+                {
+                    filaGanadora = fila;
+                    colGanadora = col;
+                    return true;
+                }
+            }
+        }
+    }
+    return false;
+}
