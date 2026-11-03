@@ -29,7 +29,7 @@ void limpiarTablero(char tablero[TAMANO][TAMANO]) // DEJA TODAS LAS CASILLAS DEL
     }
 }
 
-void mostrarTablero(char tablero[TAMANO][TAMANO])
+void mostrarTablero(char tablero[TAMANO][TAMANO]) // DIBUJA EL TABLERO.
 {
     cout << "\n";
     for (int fila = 0; fila < TAMANO; fila ++)
@@ -39,9 +39,16 @@ void mostrarTablero(char tablero[TAMANO][TAMANO])
         {
             if (tablero[fila][col] == VACIO)
             {
-                cout << (fila * TAMANO + col + 1);
+                cout << (fila * TAMANO + col + 1); // MUESTRA EL NÚMERO DE CASILLA
             }
-
+            else
+            {
+                cout << tablero[fila][col];
+            }
+            if (col < TAMANO - 1) cout << " | "; 
         }
+        cout << "\n";
+        if (fila < TAMANO - 1) cout << "     ---------\n";
     }
+    cout << "\n";
 }
