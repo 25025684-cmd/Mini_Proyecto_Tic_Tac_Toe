@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <limits>
-#include <cstlib>
+#include <cstdlib>
 # include <ctime>
 
 using namespace std;
@@ -13,12 +13,12 @@ const char SIMBOLO_X = 'X';
 const char SIMBOLO_O = 'O';
 
 //MARCADOR ACUMULADO ENTRE PARTIDAS 
-int victoriasJugador1 = 0
-int victoriasJugador2 = 0
-int empateas = 0
+int victoriasJugador1 = 0;
+int victoriasJugador2 = 0;
+int empates = 0;
 
 //FUNCIONES DEL TABLERO
-void limpiarTablero(char tablero[TAMANO][TAMANO]) // DEJA TODAS LAS CASILLAS DEL TABLERO VACÍAS
+void limpiarTablero(char tablero[TAMANO][TAMANO])  // DEJA TODAS LAS CASILLAS DEL TABLERO VACÍAS
 {
     for (int fila = 0; fila < TAMANO; fila++) 
     {
@@ -54,7 +54,7 @@ void mostrarTablero(char tablero[TAMANO][TAMANO]) // DIBUJA EL TABLERO.
 }
 
 // INDICA SI UNA CASILLA ESTÁ DENTRO DEL TABLERO Y LIBRE
-bool casillalibre(char tablero[TAMANO][TAMANO], int fila, int col)
+bool casillaLibre(char tablero[TAMANO][TAMANO], int fila, int col)
 {
     return fila >= 0 && fila < TAMANO && col >= 0 && col < TAMANO
             && tablero[fila][col] == VACIO;
@@ -64,7 +64,7 @@ bool casillalibre(char tablero[TAMANO][TAMANO], int fila, int col)
 bool hayGanador(char tablero[TAMANO][TAMANO], char simbolo)
 //FILAS Y COLUMNAS
 {
-    for (int i = 0; < TAMANO; i++)
+    for (int i = 0; i < TAMANO; i++)
     {
         if (tablero[i][0] == simbolo && tablero[i][1] == simbolo && tablero [i][2] == simbolo)
             return true;
@@ -102,7 +102,7 @@ int leerEntero(const string& mensaje, int minimo, int maximo)
         cout << mensaje;
         if (cin >> valor)
         {
-            cin.ignore(numeric_limits<streamsize>::max(), "\n");
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             if (valor >= minimo && valor <= maximo)
             {
                 return valor;
@@ -117,7 +117,7 @@ int leerEntero(const string& mensaje, int minimo, int maximo)
                 exit(0);
             }
             cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), "\n");
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             cout << " Entrada invalida. Escriba solo numeros.\n";
         }
     }
@@ -151,21 +151,21 @@ void turnoHumano(char tablero[TAMANO][TAMANO], const string& nombre, char simbol
 {
     while (true)
     {
-        int casilla = leerEntero(nombre + " (" + simbolo +"), elige una casilla (1-9): ", 1, 9);
-        int fila = (casilla - 1) / TAMANO; 
-        int col = (casilla - 1) % TAMANO;
+        int casilla = leerEntero(nombre + " (" + simbolo + "), elige una casilla (1-9): ", 1, 9);
+        int fila = (casilla - 1) / TAMANO;
+        int col  = (casilla - 1) % TAMANO; 
 
         if (casillaLibre(tablero, fila, col))
         {
             tablero[fila][col] = simbolo;
             return;
         }
-        cout << " Esa casilla ya esta ocupada. Intenta de nuevo.\n";
+        cout << "  Esa casilla ya esta ocupada. Intenta de nuevo.\n";
     }
 }
 
 // BUSCAR UNA CASILLA DONDE "SIMBOLO" GANARÍA EN EL SIGUIENTE MOVIMIENTO
-bool buscarGanadora(char tablero[TAMANO][TAMANO], char simbolo, int& filaGanadora, int& colGanadora)
+bool buscarJugadaGanadora(char tablero[TAMANO][TAMANO], char simbolo, int& filaGanadora, int& colGanadora)
 {
     for (int fila = 0; fila < TAMANO; fila++)
     {
@@ -191,7 +191,7 @@ bool buscarGanadora(char tablero[TAMANO][TAMANO], char simbolo, int& filaGanador
 // TURNO DE LA CPU:
 void turnoCPU(char tablero[TAMANO][TAMANO], char simboloCPU, char simboloRival)
 {
-    int fila col;
+    int fila, col;
     if (buscarJugadaGanadora(tablero, simboloCPU, fila, col)) {} 
     else if (buscarJugadaGanadora(tablero, simboloRival, fila, col)) {} 
     else if (tablero[1][1] == VACIO)
