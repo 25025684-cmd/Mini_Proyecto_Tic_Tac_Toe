@@ -263,3 +263,37 @@ void jugarPartida(const string& nombre1, const string& nombre2, bool contraCPU)
     }
 }
 
+// MENÚS Y EXTRAS
+void mostrarInstrucciones()
+{
+    cout << "\n=========== INSTRUCCIONES ===========\n"
+         << "- El tablero tiene casillas numeradas del 1 al 9:\n"
+         << "     1 | 2 | 3\n"
+         << "     ---------\n"
+         << "     4 | 5 | 6\n"
+         << "     ---------\n"
+         << "     7 | 8 | 9\n"
+         << "- Los jugadores se turnan para colocar su simbolo (X u O).\n"
+         << "- Gana quien logre 3 simbolos en linea (fila, columna o diagonal).\n"
+         << "- Si el tablero se llena sin ganador, es empate.\n"
+         << "=====================================\n";
+}
+
+void mostrarMarcador(const string& nombre1, const string& nombre2)
+{
+    cout << "\n------------- MARCADOR -------------\n"
+         << nombre1 << ": " << victoriasJugador1 << "\n"
+         << nombre2 << ": " << victoriasJugador2 << "\n"
+         << "Empates: " << empates << "\n"
+         << "------------------------------------\n";
+}
+
+void mostrarMenu() 
+{
+    cout << "\n========== TIC TAC TOE ==========\n"
+         << "1. Jugar contra otro jugador\n"
+         << "2. Jugar contra la CPU\n"
+         << "3. Ver instrucciones\n"
+         << "4. Salir\n"
+         << "=================================\n";
+}
