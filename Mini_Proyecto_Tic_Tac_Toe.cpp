@@ -187,3 +187,26 @@ bool buscarGanadora(char tablero[TAMANO][TAMANO], char simbolo, int& filaGanador
     }
     return false;
 }
+
+// TURNO DE LA CPU:
+void turnoCPU(char tablero[TAMANO][TAMANO], char simboloCPU, char simboloRival)
+{
+    int fila col;
+    if (buscarJugadaGanadora(tablero, simboloCPU, fila, col)) {} 
+    else if (buscarJugadaGanadora(tablero, simboloRival, fila, col)) {} 
+    else if (tablero[1][1] == VACIO)
+    {
+        fila = 1;
+        col = 1;
+    } else 
+    {
+        do 
+        {
+            fila = rand() % TAMANO;
+            col = rand() %TAMANO;
+        } while (!casillaLibre(tablero, fila, col));
+    }
+    tablero[fila][col] = simboloCPU;
+    cout << "La CPU (" << simboloCPU << ") juega en la casilla"
+         << (fila * TAMANO + col + 1) << ".\n";
+}
