@@ -147,3 +147,20 @@ bool preguntarSiNo(const string& mensaje)
 }
 
 // TURNOS DE JUEGO
+void turnoHumano(char tablero[TAMANO][TAMANO], const string& nombre, char simbolo)
+{
+    while (true)
+    {
+        int casilla = leerEntero(nombre + " (" + simbolo +"), elige una casilla (1-9): ", 1, 9);
+        int fila = (casilla - 1) / TAMANO; 
+        int col = (casilla - 1) % TAMANO;
+
+        if (casillaLibre(tablero, fila, col))
+        {
+            tablero[fila][col] = simbolo;
+            return;
+        }
+        cout << " Esa casilla ya esta ocupada. Intenta de nuevo.\n";
+    }
+}
+
