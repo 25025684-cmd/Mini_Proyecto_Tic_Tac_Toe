@@ -297,3 +297,39 @@ void mostrarMenu()
          << "4. Salir\n"
          << "=================================\n";
 }
+
+// PROGRAMA PRINCIPAL
+int main()
+{
+    srand(static_cast<unsigned>(time(nullptr)));
+    int opcion;
+    do
+    {
+        mostrarMenu();
+        opcion = leerEntero("Elige una opcion (1-4): ", 1, 4);
+        if (opcion == 1 || opcion == 2)
+        {
+            bool contraCPU = (opcion == 2);
+            victoriasJugador1 = victoriasJugador2 = empates = 0;
+            string nombre1 = leerNombre("Nombre del Jugador 1 (X): ", "Jugador 1");
+            string nombre2 = "CPU";
+            if (!contraCPU)
+            {
+                nombre2 = leerNombre("Nombre del Jugador 2 (O): ", "Jugador 2");
+            }
+            bool otraPartida;
+            do
+            {
+                jugarPartida(nombre1, nombre2, contraCPU);
+                mostrarMarcador(nombre1, nombre2);
+                otraPartida = preguntarSiNo("Quieren Jugar otra Partida?");
+            } while (otraPartida);
+        } else if (opcion == 3)
+        {
+            mostrarInstrucciones();
+        }
+    } while (opcion == 4);
+    cout << "\nGracias por jugar. Hasta pronto!\n";
+    
+    return 0;
+}
