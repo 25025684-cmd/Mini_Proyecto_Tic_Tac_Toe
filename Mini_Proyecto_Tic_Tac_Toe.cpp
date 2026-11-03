@@ -94,3 +94,40 @@ bool tableroLleno(char tablero[TAMANO][TAMANO])
 }
 
 // ENTRADA DE DATOS
+int leerEntero(const string& mensaje, int minimo, int maximo)
+{
+    int valor;
+    while (true)
+    {
+        cout << mensaje;
+        if (cin >> valor)
+        {
+            cin.ignore(numeric_limits<streamsize>::max(), "\n");
+            if (valor >= minimo && valor <= maximo)
+            {
+                return valor;
+            }
+            cout << " Valor fuera de rango. Debe estar entre "
+                 << minimo << " y " << maximo << ".\n";
+        }else
+        {
+            if (cin.eof())
+            {
+                cout << "\nEntrada finalizada. Saliendo....\n";
+                exit(0);
+            }
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), "\n");
+            cout << " Entrada invalida. Escriba solo numeros.\n";
+        }
+    }
+}
+// PIDE UN NOMBRE AL USUARIO; SI LO DEJA VACÍO USA EL NOMBRE POR DEFECTO
+string leerNombre(const string& mensaje, const string& porDefecto)
+{
+    string nombre; 
+    cout << mensaje;
+    getline(cin, nombre);
+    if (nombre.empty()) return porDefecto;
+    return nombre;
+}
