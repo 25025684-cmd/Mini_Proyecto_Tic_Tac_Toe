@@ -210,3 +210,56 @@ void turnoCPU(char tablero[TAMANO][TAMANO], char simboloCPU, char simboloRival)
     cout << "La CPU (" << simboloCPU << ") juega en la casilla"
          << (fila * TAMANO + col + 1) << ".\n";
 }
+
+// PARTIDA COMPLETA
+// JUEGA UNA PARTIDA. SI CPU ES TRUE, EL JUGADOR 2 ES CONTROLADO POR LA CPU
+void jugarPartida(const string& nombre1, const string& nombre2, bool contraCPU)
+{
+    char tablero[TAMANO][TAMANO];
+    limpiarTablero(tablero);
+    int turno = 1;
+    bool terminado = false;
+
+    while (!terminado)
+    {
+        mostrarTablero(tablero);
+
+        // EJECUTA EL TURNO SEGÚN QUIÉN JUEGA
+        if (turno == 1)
+        {
+            turnoHumano(tablero, nombre1, SIMBOLO_X);
+            if (hayGanador(tablero, SIMBOLO_X))
+            {
+                mostrarTablero(tablero);
+                cout << "***" << nombre1 << " gana la partida! ***\n";
+                victoriasJugador1++;
+                terminado = true;
+            }
+        } else
+        {
+            if (contraCPU)
+            {
+                turnoCPU(tablero, SIMBOLO_O, SIMBOLO_X);
+            } else 
+            {
+                turnoHumano(tablero, nombre2, SIMBOLO_O);
+            }
+            if (hayGanador(tablero, SIMBOLO_O))
+            {
+                mostrarTablero(tablero);
+                cout << "***" << nombre2 << " gana la partida! ***\n";
+                victoriasJugador2++;
+                terminado = true;
+            }
+        }
+        if (!terminado && tableroLleno(tablero))
+        {
+            mostrarTablero(tablero);
+            cout << "*** Empate! ***\n";
+            empates++;
+            terminado = true;
+        }
+        turno = (turno == 1) ? 2 : 1;
+    }
+}
+
