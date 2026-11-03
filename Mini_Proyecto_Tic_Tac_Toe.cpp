@@ -78,3 +78,19 @@ bool hayGanador(char tablero[TAMANO][TAMANO], char simbolo)
         return true;
     return false;
 }
+
+// DEVUELVE TRUE SI YA NO QUEDAN CASILLAS LIBRES (POSIBLE EMPATE)
+bool tableroLleno(char tablero[TAMANO][TAMANO])
+{
+    for (int fila = 0; fila < TAMANO; fila++)
+    {
+        for (int col = 0; col < TAMANO; col++)
+        {
+            if (tablero[fila][col] == VACIO)
+            return false;
+        }
+    }
+    return false;
+}
+
+// ENTRADA DE DATOS
